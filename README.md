@@ -34,3 +34,37 @@ brew install just
 * list all notebooks: `just list`
 * create/edit notebook: `just edit <notebook-name>`
 * run notebook as app: `just run <notebook-name>`
+
+
+## References, Links
+
+Collection of links found that maybe useful for learning and reference.
+Currently not on particular order, will be organized later.
+
+* [Dive into Deep Learning](https://d2l.ai/)
+* [Deep Learning for Coders with fastai and PyTorch](https://course.fast.ai/)
+* https://karpathy.ai/
+* https://colah.github.io/
+* https://www.3blue1brown.com/
+
+### NN
+* [Transformers Crash Course](https://github.com/syarahmadi/transformers-crash-course)
+*
+
+### PyTorch
+* [PyTorch playground](https://adityassrana.github.io/blog/tutorials/2020/04/22/PyTorch-Playground.html)
+* [Grokking PyTorch](https://github.com/Kaixhin/grokking-pytorch)
+* [Effective PyTorch](https://github.com/vahidk/EffectivePyTorch)
+* [The Python Magic Behind PyTorch](https://amitness.com/2020/03/python-magic-behind-pytorch)
+* [PyTorch StyleGuide](https://github.com/IgorSusmelj/pytorch-styleguide/blob/master/README.md)
+* [Pytorch Coding Conventions](https://discuss.pytorch.org/t/pytorch-coding-conventions/42548)
+* [Fine Tuning etc](https://spandan-madan.github.io/A-Collection-of-important-tasks-in-pytorch/)
+* [PyTorch Beginner](https://github.com/L1aoXingyu/pytorch-beginner) - comment in chinese
+* [PyTorch Tutorial](https://github.com/yunjey/pytorch-tutorial) - nice commented out pytorch tutorial
+* [PyTorch Tutorial](https://github.com/MorvanZhou/PyTorch-Tutorial) - another nice tutorial
+* [PyTorch Dive into Deep Learning - d2l.ai](https://github.com/dsgiitr/d2l-pytorch) - d2l.ai in pytorch
+
+### Python
+* [Python is Cool - ChipHuyen](https://github.com/chiphuyen/python-is-cool/blob/master/README.md)
+* [Clean Code Python](https://github.com/zedr/clean-code-python)
+* [underscore in python](https://dbader.org/blog/meaning-of-underscores-in-python)

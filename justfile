@@ -60,8 +60,11 @@ nb-edit target:
     #!/usr/bin/env bash
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
     conda activate {{conda_env}}
+    parent=$(dirname "{{target}}")
+    filename=$(basename "{{target}}")
     cd notebooks
-    marimo edit {{target}}.py
+    mkdir -p "$parent"
+    marimo edit "{{target}}.py"
 
 # run notebook
 nb-run target:
