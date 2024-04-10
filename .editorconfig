@@ -1,0 +1,44 @@
+# https://editorconfig.org/
+# copied from: https://github.com/django/django/blob/main/.editorconfig
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{py,rst,ini}]
+# Docstrings and comments use max_line_length = 79
+max_line_length = 180
+
+[*.{html,css,scss,json,yml,yaml,xml}]
+# Use 2 spaces for the HTML files
+indent_size = 2
+# insert_final_newline = ignore
+
+[*.md]
+trim_trailing_whitespace = false
+
+[Makefile]
+# Makefiles always use tabs for indentation
+indent_style = tab
+
+# [**/admin/js/vendor/**]
+# indent_style = ignore
+# indent_size = ignore
+
+# Minified JavaScript files shouldn't be changed
+# [**.min.js]
+# indent_style = ignore
+# insert_final_newline = ignore
+
+# Batch files use tabs for indentation
+[*.bat]
+indent_style = tab
+
+[docs/**.txt]
+max_line_length = 79

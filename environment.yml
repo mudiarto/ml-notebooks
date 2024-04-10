@@ -1,0 +1,13 @@
+name: ml-notebooks
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pytorch
+  - marimo
+  - matplotlib
+  - pip
+  # enable this as needed
+  # - pip:
+  #   - -r requirements.txt
