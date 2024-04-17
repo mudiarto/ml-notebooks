@@ -31,11 +31,10 @@ _default:
 # conda ml-notebooks environment initialization
 env-init: _check-requirements
     #!/usr/bin/env bash
-    if conda info --envs | grep -q {{conda_env}}; then echo "{{conda_env}} already exists"; else conda create -y -f environment.yml; fi
+    export PIP_REQUIRE_VIRTUALENV=false
+    if conda info --envs | grep -q {{conda_env}}; then echo "{{conda_env}} already exists"; else conda env create -n {{conda_env}} -y -f environment.yml ; fi
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
-    conda activate {{conda_env}}
-    echo current conda environment: $CONDA_DEFAULT_ENV
-    conda install python={{python_ver}} pip pytorch marimo matplotlib
+    echo do \'conda activate {{conda_env}}\' to activate
 
 # remove conda ml-notebooks environment
 env-remove: _check-requirements
@@ -47,9 +46,10 @@ env-remove: _check-requirements
 # conda update/refresh dependencies
 env-update:
     #!/usr/bin/env bash
+    export PIP_REQUIRE_VIRTUALENV=false
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
-    conda activate {{conda_env}}
-    PIP_REQUIRE_VIRTUALENV=false conda env update --file environment.yml --prune
+    conda env update -n {{conda_env}} --file environment.yml --prune
+    echo do \'conda activate {{conda_env}}\' to activate
 
 #
 # developments
@@ -64,7 +64,7 @@ nb-edit target:
     filename=$(basename "{{target}}")
     cd notebooks
     mkdir -p "$parent"
-    marimo edit "{{target}}.py"
+    marimo -l debug edit "{{target}}.py"
 
 # run notebook
 nb-run target:
@@ -72,7 +72,7 @@ nb-run target:
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
     conda activate {{conda_env}}
     cd notebooks
-    marimo run {{target}}.py
+    marimo -l debug run {{target}}.py
 
 # list notebooks
 nb-list:

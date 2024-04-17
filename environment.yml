@@ -3,11 +3,13 @@ channels:
   - pytorch
   - conda-forge
 dependencies:
+  - nodejs
   - python=3.11
+  - pre-commit
   - pytorch
   - marimo
   - matplotlib
+  - plotly
   - pip
-  # enable this as needed
-  # - pip:
-  #   - -r requirements.txt
+  - pip:
+    - -r requirements.txt

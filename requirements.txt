@@ -1,0 +1,7 @@
+# installed using conda
+# torch
+# marimo
+# matplotlib
+# plotly
+
+# add PyPi package only here
