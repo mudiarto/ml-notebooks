@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+
 import marimo
 
-__generated_with = "0.3.12"
+__generated_with = "0.4.0"
 app = marimo.App()
 
 
@@ -22,7 +23,7 @@ def __():
     print("t1: one dimension tensor")
     print(f"content: {t1}")
     print(f"shape: {t1.shape}")
-
+    t1
     return t1, torch
 
 
@@ -36,7 +37,8 @@ def __(torch):
 
 
 @app.cell
-def __():
+def __(t2):
+    t2
     return
 
 

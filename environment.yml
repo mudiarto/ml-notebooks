@@ -10,6 +10,7 @@ dependencies:
   - marimo
   - matplotlib
   - plotly
+  - altair-all
   - pip
   - pip:
     - -r requirements.txt

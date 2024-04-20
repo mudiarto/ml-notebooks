@@ -25,6 +25,13 @@ repos:
         args: [ "--pytest-test-first" ]
       - id: check-builtin-literals
       - id: check-ast
+  # gitleaks secret scanning
+  # NOTE: currently disabled because of error: unknown option `staged'
+  #       hopefully it will be fixed in future releases
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.18.2  # Replace by any tag/version: https://github.com/zricethezav/gitleaks/releases
+    hooks:
+      - id: gitleaks-docker
   # ruff formatter
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
