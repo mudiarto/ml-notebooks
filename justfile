@@ -52,6 +52,25 @@ env-update:
     echo do \'conda activate {{conda_env}}\' to activate
 
 #
+# mlflow docker
+#
+
+# run mlflow in docker
+mlflow-run:
+    #!/usr/bin/env bash
+    docker compose --env-file configs/docker.env up -d --build
+
+# stop mlflow in docker
+mlflow-stop:
+    #!/usr/bin/env bash
+    docker compose --env-file configs/docker.env down
+
+# mlflow docker status
+mlflow-status:
+    #!/usr/bin/env bash
+    docker compose --env-file configs/docker.env stats
+
+#
 # developments
 #
 
