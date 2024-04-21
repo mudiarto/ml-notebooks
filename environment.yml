@@ -1,16 +1,38 @@
 name: ml-notebooks
 channels:
   - pytorch
+  - nvidia
   - conda-forge
 dependencies:
   - nodejs
   - python=3.11
   - pre-commit
+  # ML & AI library
   - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda
+  - cuda
+  - fastai
+  # mlflow for machine learning organization
+  - mlflow
+  # jupyterlab & development
+  - jupyterlab
+  - voila
+  - nbdev
+  - jupyterlab_vim
+  # seems required by nbdev
+  - fsspec
+  # jupyter alternative
   - marimo
+  # graphic
   - matplotlib
   - plotly
   - altair-all
+  - Pillow
+  # debugging
+  - icecream
+  # pip
   - pip
   - pip:
     - -r requirements.txt

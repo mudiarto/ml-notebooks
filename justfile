@@ -71,11 +71,22 @@ mlflow-status:
     docker compose --env-file configs/docker.env stats
 
 #
-# developments
+# jupyter lab start
 #
 
-# edit notebook
-nb-edit target:
+jupyter:
+    #!/usr/bin/env bash
+    eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
+    conda activate {{conda_env}}
+    jupyter lab
+
+#
+# marimo notebooks
+# NOTE: currently not used much because it prevent 'import *'
+#
+
+# edit marimo notebook - by my convention it is named file.mo.py
+mo-edit target:
     #!/usr/bin/env bash
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
     conda activate {{conda_env}}
@@ -83,23 +94,23 @@ nb-edit target:
     filename=$(basename "{{target}}")
     cd notebooks
     mkdir -p "$parent"
-    marimo -l debug edit "{{target}}.py"
+    marimo -l debug edit "{{target}}.mo.py"
 
-# run notebook
-nb-run target:
+# run marimo notebook - by my convention it is named file.mo.py
+mo-run target:
     #!/usr/bin/env bash
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
     conda activate {{conda_env}}
     cd notebooks
-    marimo -l debug run {{target}}.py
+    marimo -l debug run {{target}}.mo.py
 
 # list notebooks
-nb-list:
+mo-list:
     #!/usr/bin/env bash
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
     conda activate {{conda_env}}
     echo "Available notebooks:"
-    find "notebooks" -type f -name "*.py" | sed -e 's/^notebooks\///' | sed -e 's/\.py$//' | sort
+    find "notebooks" -type f -name "*.mo.py" | sed -e 's/^notebooks\///' | sed -e 's/\.mo\.py$//' | sort
 
 
 _check-requirements:
