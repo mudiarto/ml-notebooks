@@ -4,7 +4,7 @@ default_stages: [ commit, push ]
 repos:
   # pre-commit formatting hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0 # Replace by any tag/version:
+    rev: v4.6.0 # Replace by any tag/version:
     hooks:
       - id: trailing-whitespace
       - id: check-case-conflict
@@ -25,9 +25,19 @@ repos:
         args: [ "--pytest-test-first" ]
       - id: check-builtin-literals
       - id: check-ast
+  # ensure notebook is clean before committed
+  - repo: https://github.com/patnr/nbhooks.git
+    rev: v1.4.1  # Use `pre-commit autoupdate --bleeding-edge` to set to most recent version
+    hooks:
+    - id: nb-ensure-clean
+      args: [--meta, pin_output] # keep output, errored out instead of auto clean
+  # clean and simplify jupyter notebook
+  - repo: https://github.com/fastai/nbdev
+    rev: 2.3.13
+    hooks:
+      - id: nbdev_clean
+      # - id: nbdev_export  # I got error - will try again in the future
   # gitleaks secret scanning
-  # NOTE: currently disabled because of error: unknown option `staged'
-  #       hopefully it will be fixed in future releases
   - repo: https://github.com/zricethezav/gitleaks
     rev: v8.18.2  # Replace by any tag/version: https://github.com/zricethezav/gitleaks/releases
     hooks:
@@ -35,7 +45,7 @@ repos:
   # ruff formatter
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.3.5
+    rev: v0.4.1
     hooks:
       # Run the linter.
       - id: ruff
