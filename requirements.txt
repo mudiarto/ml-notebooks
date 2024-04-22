@@ -5,3 +5,6 @@
 # plotly
 
 # add PyPi package only here
+
+# jupyterlab-quarto not available in conda
+jupyterlab-quarto
