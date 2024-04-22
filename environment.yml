@@ -2,6 +2,7 @@ name: ml-notebooks
 channels:
   - pytorch
   - nvidia
+  - fastai
   - conda-forge
 dependencies:
   - nodejs
@@ -11,9 +12,14 @@ dependencies:
   - pytorch
   - torchvision
   - torchaudio
-  - pytorch-cuda
-  - cuda
   - fastai
+  - scikit-learn
+  # cuda installed separately using conda directly
+  # - pytorch-cuda
+  # - cuda
+  # ml ui
+  - gradio
+  - ipywidgets
   # mlflow for machine learning organization
   - mlflow
   # jupyterlab & development
@@ -27,6 +33,7 @@ dependencies:
   - marimo
   # graphic
   - matplotlib
+  - seaborn
   - plotly
   - altair-all
   - Pillow

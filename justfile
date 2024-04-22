@@ -49,7 +49,17 @@ env-update:
     export PIP_REQUIRE_VIRTUALENV=false
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
     conda env update -n {{conda_env}} --file environment.yml --prune
+    # Check for CUDA and try installing.
+    if ! command -v nvidia-smi &> /dev/null
+    then
+        echo "CUDA is not available."
+    else
+        conda install -n {{conda_env}} -c pytorch -c nvidia -c conda-forge pytorch-cuda cuda cudatoolkit -y
+        echo "CUDA and PyTorch have been updated."
+    fi
     echo do \'conda activate {{conda_env}}\' to activate
+
+
 
 #
 # mlflow docker
@@ -78,6 +88,9 @@ jupyter:
     #!/usr/bin/env bash
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
     conda activate {{conda_env}}
+    # add current directory to jupyter path
+    export PYTHONPATH=`pwd`:$PYTHONPATH
+    echo $PYTHONPATH
     jupyter lab
 
 #
