@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "ml-notebooks"
+  site-url: "https://mudiarto.github.io/ml-notebooks"
+  description: "My Machine Learning Notebooks & Experimentation"
+  repo-branch: dev
+  repo-url: "https://github.com/mudiarto/ml-notebooks"
