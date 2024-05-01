@@ -68,17 +68,11 @@ env-update:
 # run mlflow in docker
 mlflow-run:
     #!/usr/bin/env bash
-    docker compose --env-file configs/docker.env up -d --build
-
-# stop mlflow in docker
-mlflow-stop:
-    #!/usr/bin/env bash
-    docker compose --env-file configs/docker.env down
-
-# mlflow docker status
-mlflow-status:
-    #!/usr/bin/env bash
-    docker compose --env-file configs/docker.env stats
+    mlflow server \
+      --backend-store-uri sqlite:///mlflow/data/db.sqlite3 \
+      --host 0.0.0.0 \
+      --serve-artifacts \
+      --artifacts-destination mlflow/mlartifacts
 
 #
 # jupyter lab start

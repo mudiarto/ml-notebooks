@@ -12,7 +12,7 @@ repos:
       - id: check-yaml
         args: ["--unsafe"]
       - id: check-added-large-files
-        args: [ '--maxkb=128' ]
+        args: [ '--maxkb=1024' ]
       - id: mixed-line-ending
       - id: fix-encoding-pragma
       - id: debug-statements
@@ -25,18 +25,19 @@ repos:
         args: [ "--pytest-test-first" ]
       - id: check-builtin-literals
       - id: check-ast
+  # I decided that it is probably better to just leave the output so others can see it easily
   # ensure notebook is clean before committed
-  - repo: https://github.com/mudiarto/nbhooks.git
-    rev: 1.5.0  # Use `pre-commit autoupdate --bleeding-edge` to set to most recent version
-    hooks:
-    - id: nb-ensure-clean
-      args: [--meta, "editable|slideshow|tags", --fix] # keep output, errored out instead of auto clean
+  # - repo: https://github.com/mudiarto/nbhooks.git
+  #   rev: 1.5.0  # Use `pre-commit autoupdate --bleeding-edge` to set to most recent version
+  #   hooks:
+  #   - id: nb-ensure-clean
+  #     args: [--meta, "editable|slideshow|tags", --fix] # keep output, errored out instead of auto clean
   # clean and simplify jupyter notebook
-  - repo: https://github.com/fastai/nbdev
-    rev: 2.3.13
-    hooks:
-      - id: nbdev_clean
-      # - id: nbdev_export  # I got error - will try again in the future
+  # - repo: https://github.com/fastai/nbdev
+  #   rev: 2.3.13
+  #   hooks:
+  #     # - id: nbdev_clean
+  #    # - id: nbdev_export - no library needed
   # gitleaks secret scanning
   # - repo: https://github.com/zricethezav/gitleaks
   #   rev: v8.18.2  # Replace by any tag/version: https://github.com/zricethezav/gitleaks/releases

@@ -8,3 +8,7 @@
 
 # jupyterlab-quarto not available in conda
 jupyterlab-quarto
+
+# mlflow failed on conda with this error: https://github.com/mlflow/mlflow/issues/3631
+# but it seems to work fine with pip
+mlflow

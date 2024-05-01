@@ -14,14 +14,13 @@ dependencies:
   - torchaudio
   - fastai
   - scikit-learn
-  # cuda installed separately using conda directly
+  # cuda installed separately using conda directly - so we can use the same file on non-cuda environment
   # - pytorch-cuda
   # - cuda
+  #
   # ml ui
   - gradio
   - ipywidgets
-  # mlflow for machine learning organization
-  - mlflow
   # jupyterlab & development
   - jupyterlab
   - voila
