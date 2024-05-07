@@ -1,6 +1,7 @@
 name: ml-notebooks
 #
-# WARNING: keep it sync with environment.cuda.yml - except for cuda related packages
+# WARNING: keep it sync with environment.yml - except for cuda related packages
+#
 # This is the most straightforward way to keep the environment file in sync - since environment.yml (AFAIK) doesn't
 # support conditional import, or import from 2 environment files
 # If I call conda install twice, it may caus dependency calculation issues (e.g. some packages got downgraded on the
@@ -25,9 +26,9 @@ dependencies:
   #
   # cuda library - please comment in environment.yml
   #
-  # - pytorch-cuda
-  # - cuda
-  # - cudatoolkit
+  - pytorch-cuda
+  - cuda
+  - cudatoolkit
   #
   # ml ui
   - gradio

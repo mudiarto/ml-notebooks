@@ -32,7 +32,19 @@ _default:
 env-init: _check-requirements
     #!/usr/bin/env bash
     export PIP_REQUIRE_VIRTUALENV=false
-    if conda info --envs | grep -q {{conda_env}}; then echo "{{conda_env}} already exists"; else conda env create -n {{conda_env}} -y -f environment.yml ; fi
+    # Check for CUDA and try installing.
+    if ! command -v nvidia-smi &> /dev/null
+    then
+        echo "==================================================="
+        echo " check/installing environment.yml NO-CUDA"
+        echo "==================================================="
+        if conda info --envs | grep -q {{conda_env}}; then echo "{{conda_env}} already exists"; else conda env create -n {{conda_env}} -y -f environment.yml ; fi
+    else
+        echo "==================================================="
+        echo " check/installing environment.yml CUDA"
+        echo "==================================================="
+        if conda info --envs | grep -q {{conda_env}}; then echo "{{conda_env}} already exists"; else conda env create -n {{conda_env}} -y -f environment.cuda.yml ; fi
+    fi
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
     echo do \'conda activate {{conda_env}}\' to activate
 
@@ -48,14 +60,18 @@ env-update:
     #!/usr/bin/env bash
     export PIP_REQUIRE_VIRTUALENV=false
     eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
-    conda env update -n {{conda_env}} --file environment.yml --prune
     # Check for CUDA and try installing.
     if ! command -v nvidia-smi &> /dev/null
     then
-        echo "CUDA is not available."
+        echo "==================================================="
+        echo " check/installing environment.yml NO-CUDA"
+        echo "==================================================="
+        conda env update -n {{conda_env}} --file environment.yml --prune
     else
-        conda install -n {{conda_env}} -c pytorch -c nvidia -c conda-forge pytorch-cuda cuda cudatoolkit -y
-        echo "CUDA and PyTorch have been updated."
+        echo "==================================================="
+        echo " check/installing environment.yml CUDA"
+        echo "==================================================="
+        conda env update -n {{conda_env}} --file environment.cuda.yml --prune
     fi
     echo do \'conda activate {{conda_env}}\' to activate
 

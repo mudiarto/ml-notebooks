@@ -21,6 +21,18 @@ rm -rf ~/miniconda3/miniconda.sh
 brew install just
 ```
 
+### clone with git lfs
+* see: https://git-lfs.github.com/
+* for mac osx using [homebrew](https://brew.sh/)
+```bash
+brew install git-lfs
+```
+* clone this repo
+```bash
+git clone git@github.com:mudiarto/ml-notebooks.git
+cd ml-notebooks
+```
+
 ### Run just commands
 * `just` to see all commands
 * `just conda-init`
