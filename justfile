@@ -65,14 +65,30 @@ env-update:
 # mlflow docker
 #
 
-# run mlflow in docker
+# run mlflow, listening at 0.0.0.0:5500
 mlflow-run:
     #!/usr/bin/env bash
+    eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
+    conda activate {{conda_env}}
+    # mlflow prompt engineering UI: https://www.mlflow.org/docs/latest/llms/prompt-engineering/index.html
+    export MLFLOW_DEPLOYMENTS_TARGET="http://127.0.0.1:5501"
     mlflow server \
       --backend-store-uri sqlite:///mlflow/data/db.sqlite3 \
+      --port 5500 \
       --host 0.0.0.0 \
       --serve-artifacts \
       --artifacts-destination mlflow/mlartifacts
+
+# run mlflow deployment server, listening at 0.0.0.0:5501
+mlflow-run-deploy:
+    #!/usr/bin/env bash
+    eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
+    conda activate {{conda_env}}
+    mlflow deployments start-server \
+      --config-path configs/mlflow_genai_config.yaml \
+      --port 5501 \
+      --host 0.0.0.0 \
+      --workers 2
 
 #
 # jupyter lab start

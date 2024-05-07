@@ -26,6 +26,10 @@ dependencies:
   - voila
   - nbdev
   - jupyterlab_vim
+    # jupyter-ai & its dependencies (langchain-openai)
+  - jupyter-ai
+  - jupyter-ai-magics
+  - langchain-openai
   # seems required by nbdev
   - fsspec
   # jupyter alternative

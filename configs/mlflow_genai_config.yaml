@@ -1,0 +1,43 @@
+endpoints:
+
+#
+# openai
+#
+
+- name: completions_gpt35turbo
+  endpoint_type: llm/v1/completions
+  model:
+      provider: openai
+      name: gpt-3.5-turbo
+      config:
+          openai_api_key: $OPENAI_API_KEY
+
+- name: chat_gpt4
+  endpoint_type: llm/v1/chat
+  model:
+      provider: openai
+      name: gpt-4
+      config:
+          openai_api_key: $OPENAI_API_KEY
+
+- name: embeddings
+  endpoint_type: llm/v1/embeddings
+  model:
+      provider: openai
+      name: text-embedding-ada-002
+      config:
+          openai_api_key: $OPENAI_API_KEY
+
+#
+# ollama
+# https://ollama.com/blog/openai-compatibility
+#
+
+- name: chat_llama3
+  endpoint_type: llm/v1/chat
+  model:
+      provider: openai
+      name: llama3
+      config:
+          openai_api_key: localhost_any_key_should_work
+          openai_api_base: http://localhost:11434/v1

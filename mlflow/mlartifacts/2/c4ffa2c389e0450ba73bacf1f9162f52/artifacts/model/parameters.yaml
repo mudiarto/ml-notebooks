@@ -1,0 +1,9 @@
+model_parameters:
+  max_tokens: '100'
+  route_type: mlflow_deployment_endpoint
+  temperature: '0.01'
+model_route: chat_llama3
+prompt_parameters:
+  stock_type: books
+prompt_template: I have an online store selling {{ stock_type }}. Write a one-sentence
+  advertisement for use in social media.
